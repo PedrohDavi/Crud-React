@@ -1,7 +1,7 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
 
 import axios from 'axios';
-import { Button, Center, Checkbox, Input, Select, Stack } from '@chakra-ui/react'
+import { Box, Button, Center, Checkbox, Heading, Input, Select, Stack } from '@chakra-ui/react'
 
 interface FormData {
   name: string;
@@ -51,26 +51,26 @@ function CreatePlayer() {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <Center flexDir={'column'} p={"5rem"} gap={'0.5rem'} width={'70%'} bg={"#FFF"} borderRadius={'0.625rem'} marginTop={'2rem'} margin='auto'>
-          <h1>Cadastro de jogadores</h1>
-          <Input type="text" placeholder="Nome" name="name" value={formData.name} onChange={handleChange} />
-          <label>Idade</label>
-          <Input type="number" placeholder="Idade" name="age" value={formData.age} onChange={handleChange} />
-          <Input type="text" placeholder="Lado" name="side" value={formData.side} onChange={handleChange} />
-          <Select placeholder="Posição" name="position" value={formData.position} onChange={handleChange}>
+      <form method="POST" onSubmit={handleSubmit}>
+      <Center mt={'4rem'}>
+        <Center flexDir={'column'} p={"2rem"} gap={'0.7rem'} width={'50%'} bg={'#FCE567'} borderRadius={'0.625rem'} margin={'auto'}>
+          <Heading as='h4' size='md'>Cadastro de jogadores</Heading>
+          <Input type="text" placeholder="Nome" name="name" value={formData.name} onChange={handleChange} borderColor={'#000000'}/>
+          <Input type="number" placeholder="Idade" name="age" value={formData.age} onChange={handleChange} borderColor={'#000000'}/>
+          <Input type="text" placeholder="Lado" name="side" value={formData.side} onChange={handleChange} borderColor={'#000000'}/>
+          <Select placeholder="Posição" name="position" value={formData.position} onChange={handleChange} borderColor={'#000000'}>
             <option value="Goleiro">Goleiro</option>
             <option value="Zagueiro">Lateral</option>
             <option value="Lateral">Zagueiro</option>
             <option value="Meio-Campo">Meio-Campo</option>
             <option value="Atacante">Atacante</option>
           </Select>
-          <label>Força</label>
-          <Input type="number" placeholder="Força" name="strength" value={formData.strength} onChange={handleChange} />
-          <Input type="text" placeholder="Time" name="team" value={formData.team} onChange={handleChange} />
+          <Input type="number" placeholder="Força" name="strength" value={formData.strength} onChange={handleChange} borderColor={'#000000'}/>
+          <Input type="text" placeholder="Time" name="team" value={formData.team} onChange={handleChange} borderColor={'#000000'}/>
           <label>Estrela ?</label>
-          <Stack spacing={5} direction='row'>
+          <Stack spacing={4} direction='row'>
             <Checkbox
+              borderColor={'#000000'}
               colorScheme='green'
               name="star"
               isChecked={formData.star}
@@ -78,6 +78,7 @@ function CreatePlayer() {
               Sim
             </Checkbox>
             <Checkbox
+              borderColor={'#000000'}
               colorScheme='red'
               name="star"
               isChecked={!formData.star}
@@ -86,6 +87,7 @@ function CreatePlayer() {
             </Checkbox>
           </Stack>
           <Button type="submit" colorScheme="green">Cadastrar</Button>
+        </Center>
         </Center>
       </form>
     </div>
