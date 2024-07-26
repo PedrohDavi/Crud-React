@@ -1,7 +1,7 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
 
 import axios from 'axios';
-import { Box, Button, Center, Checkbox, Heading, Input, Select, Stack } from '@chakra-ui/react'
+import { Button, Center, Checkbox, Heading, Input, Select, Stack } from '@chakra-ui/react'
 
 interface FormData {
   name: string;
@@ -40,7 +40,7 @@ function CreatePlayer() {
       age: formData.age ? parseFloat(formData.age) : undefined,
       strength: formData.strength ? parseFloat(formData.strength) : undefined,
     };
-    axios.post('http://localhost:5000/api/players', numericData)
+    axios.post('http://localhost:5000/api/addPlayers', numericData)
       .then(response => {
         console.log('Item created:', response.data);
       })
@@ -57,7 +57,11 @@ function CreatePlayer() {
           <Heading as='h4' size='md'>Cadastro de jogadores</Heading>
           <Input type="text" placeholder="Nome" name="name" value={formData.name} onChange={handleChange} borderColor={'#000000'}/>
           <Input type="number" placeholder="Idade" name="age" value={formData.age} onChange={handleChange} borderColor={'#000000'}/>
-          <Input type="text" placeholder="Lado" name="side" value={formData.side} onChange={handleChange} borderColor={'#000000'}/>
+          <Select placeholder="Lado" name="side" value={formData.side} onChange={handleChange} borderColor={'#000000'}>
+          <option value="D">Direito</option>
+          <option value="E">Esquerdo</option>
+          <option value="A">Ambos</option>
+          </Select>
           <Select placeholder="Posição" name="position" value={formData.position} onChange={handleChange} borderColor={'#000000'}>
             <option value="Goleiro">Goleiro</option>
             <option value="Zagueiro">Lateral</option>
