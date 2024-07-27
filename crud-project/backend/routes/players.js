@@ -13,13 +13,12 @@ router.post('/addPlayer', (req, res) => {
 });
 
 router.get('/players', (req, res) => {
-    const data = req.body;
-    Player.read(data, (err, result) => {
+    Player.read((err, result) => {
         if (err) {
-            return res.status(500).json({ error: err.message });
-          }
-          res.status(200).json({ message: 'Jogadores carregados com sucesso', data: result });
-    })
+            return res.status(500).json({ error: err });
+        }
+        res.status(200).json(result);
+    });
 });
 
 module.exports = router;

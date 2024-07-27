@@ -13,17 +13,21 @@ const Player = {
         }
     },
 
-    read: async(res) => {
+    read: async (callback) => {
         const query = 'SELECT * FROM players';
         try {
             const conn = await pool.getConnection();
             const [result] = await conn.query(query);
             conn.release();
-            res(null, result);
+            if (typeof callback === 'function') {
+                callback(null, result);
+            }
         } catch (err) {
-            res(err);
+            if (typeof callback === 'function') {
+                callback(err);
+            }
         }
-    }
+    },
 };
 
 module.exports = Player;
