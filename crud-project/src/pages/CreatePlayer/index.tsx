@@ -1,7 +1,8 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
 
 import axios from 'axios';
-import { Button, Center, Checkbox, Heading, Input, Select, Stack } from '@chakra-ui/react'
+import { Box, Button, Center, Checkbox, Heading, Input, Select, Stack } from '@chakra-ui/react'
+import { Navbar } from "../../components/Navbar";
 
 interface FormData {
   name: string;
@@ -51,9 +52,9 @@ function CreatePlayer() {
 
   return (
     <div>
-      <form method="POST" onSubmit={handleSubmit}>
+      <form method="POST" onSubmit={handleSubmit} >
       <Center mt={'4rem'}>
-        <Center flexDir={'column'} p={"2rem"} gap={'0.7rem'} width={'50%'} bg={'#FCE567'} borderRadius={'0.625rem'} margin={'auto'}>
+        <Center flexDir={'column'} p={"2rem"} gap={'0.7rem'} width={'30%'} bg={'linear-gradient(to bottom, #ccffff 0%, #ffffff 40%)'} borderRadius={'0.625rem'} margin={'auto'} >
           <Heading as='h4' size='md'>Cadastro de jogadores</Heading>
           <Input type="text" placeholder="Nome" name="name" value={formData.name} onChange={handleChange} borderColor={'#000000'}/>
           <Input type="number" placeholder="Idade" name="age" value={formData.age} onChange={handleChange} borderColor={'#000000'}/>

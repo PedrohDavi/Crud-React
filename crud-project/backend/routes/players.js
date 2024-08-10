@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Player = require('../models/players');
 
-router.post('/addPlayer', (req, res) => {
+router.post('/addPlayers', (req, res) => {
     const data = req.body;
     Player.create(data, (err, result) => {
         if (err) {

@@ -9,7 +9,7 @@ function App() {
   return (
     <ChakraProvider theme={theme}>
         <Routes>
-          <Route path="/" element={<CreatePlayer />} />
+          <Route path="/createPlayer" element={<CreatePlayer />} />
           <Route path="/players" element={<ViewPlayers/>}/>
         </Routes>
     </ChakraProvider>
